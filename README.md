@@ -1,7 +1,7 @@
 # WGMY2024-CTF
 
 Hello and welcome to my writeup for CTF WargamesMY 2024!
-This year, i participated in the International Open Division with a random team due to last minute registration. despite the chaotic, i managed to solve all forensic challenges, solve game forensic challenge, solve several misc challenge.
+This year, I participated in the International Open Division with a random team due to last minute registration. despite the chaotic, i managed to solve all forensic challenges, solve all game challenges, solve several misc challenges.
 
 Unfortunately, I could not solve any web and blockchain challenge this time, which motivates me to sharpen my skills in that area.
 I hope you enjoy reading this simple writeup.
@@ -9,6 +9,20 @@ Happy hacking and learning!
 
 ![image](https://github.com/user-attachments/assets/ed4308e2-4db7-4d3c-b2c1-dd17c31dd372)
 
+## Table of contents
+
+| Challenge Solved | Category |
+| ---------------- | -------- |
+| [1. I Cant Manipulate People](#1-i-cant-manipulate-people-forensic) | Forensic |
+| [2. Oh Man](#2-oh-man-forensic) | Forensic |
+| [3. Tricky Malware](#3-tricky-malware-forensic) | Forensic |
+| [4. Unwanted Meow](#4-unwanted-meow-forensic) | Forensic |
+| [5. World 1](#5-world-1-game) | Game |
+| [6. World 2](#6-world-2-game) | Game |
+| [7. World 3](#7-world-3-game) | Game |
+| [8. Christmas GIFt](#8-christmas-gift-misc) | Misc |
+| [9. Invisible Ink](#9-invisible-ink-misc) | Misc |
+| [10. The DCM Meta](#10-the-dcm-meta-misc) | Misc |
 
 ## Challenge Solved
 
@@ -28,7 +42,7 @@ Open the provided `traffic.pcap` file in [Wireshark](https://www.wireshark.org/d
 
 ![image](https://github.com/user-attachments/assets/a5ab9574-56e0-4ed9-9044-341cec500264)
 
-3. flag :`WGMY{1e3b71d57e466ab71b43c2641a4b34f4}`
+3. flag: `WGMY{1e3b71d57e466ab71b43c2641a4b34f4}`
 
 ### 2. Oh Man (Forensic)
 
@@ -116,7 +130,7 @@ Run the file command on the provided file to identify its type. Suspecting it mi
 
 3. pyhton script to remove strings meow
 
-```
+```python
 # Script to clean the shredded file
 input_file = "flag.shredded"
 output_file = "flag_cleaned.jpg"
@@ -303,7 +317,7 @@ Launch [stegsolve.jar](https://github.com/eugenekolo/sec-tools/raw/master/stego/
 
 ![image](https://github.com/user-attachments/assets/0c07ea2d-6b2f-4aaf-b1b0-2ccb8647fd2e)
 
-4. flag `wgmy{d41d8cd98f00b204e9800998ecf8427e}`
+4. flag: `wgmy{d41d8cd98f00b204e9800998ecf8427e}`
 
 ### 10. The DCM Meta (Misc)
 
@@ -322,7 +336,8 @@ Given a file `challenge.dcm` and a set of element numbers, likely indices. Read 
 ![image](https://github.com/user-attachments/assets/8bdd5eb4-e917-46ca-8551-b3b12cc3da6d)
 
 3. solve python script
-```
+
+```python
 from typing import List
 
 def extract_flag(file_path: str, indices: List[int]) -> str:
