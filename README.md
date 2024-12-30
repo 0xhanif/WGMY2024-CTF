@@ -1,7 +1,7 @@
 # WGMY2024-CTF
 
 Hello and welcome to my writeup for CTF WargamesMY 2024!
-This year, i participated in the International Open Division with a random team due to last minute registration. despite the chaotic, i managed to solve all game challenges, solve all forensic challenge, solve several misc challenge.
+This year, i participated in the International Open Division with a random team due to last minute registration. despite the chaotic, i managed to solve all forensic challenges, solve game forensic challenge, solve several misc challenge.
 
 Unfortunately, I could not solve any web and blockchain challenge this time, which motivates me to sharpen my skills in that area.
 I hope you enjoy reading this simple writeup.
@@ -143,7 +143,7 @@ print(f"Cleaned file saved as {output_file}")
 
 #### Descriptions
 
-For safety, execute `World I.exe` in a sandboxed virtual machine. Analyzing the game, recognizing its architecture from a previous CTF. Played the game to its final stage but consistently lost to the last boss. Locate the save game file. Modify the save data to boost the character power and ensure victory using this [RPG MAKER MZ SAVE EDITOR](https://www.save-editor.com/tools/rpg_tkool_mz_save.html). There are five part of flag. Part 1, Defeat the first boss to obtain the flag dropped as an item. Part 2, Defeat the second boss to collect another dropped item containing the flag. Part 3, After defeating the third boss, interact with a chest in the game to obtain the flag. Part 4, locate the flag at specific terrain spot in the volcano map after defeating the fourth boss. Part 5, Defeat the final boss to access a chest requiring a password. Enter the password `wgmy` to retrieve the flag and flag dropped as an item in qr code. Merge all five parts to form the full flag.
+For safety, execute `World I.exe` in a sandboxed virtual machine. Analyzing the game, recognizing its game engine from a previous CTF. Played the game to its final stage but consistently lost to the last boss. Locate the save game file. Modify the save data to boost the character power and ensure victory using this [RPG MAKER MZ SAVE EDITOR](https://www.save-editor.com/tools/rpg_tkool_mz_save.html). There are five part of flag. Part 1, Defeat the first boss to obtain the flag dropped as an item. Part 2, Defeat the second boss to collect another dropped item containing the flag. Part 3, After defeating the third boss, interact with a chest in the game to obtain the flag. Part 4, locate the flag at specific terrain spot in the volcano map after defeating the fourth boss. Part 5, Defeat the final boss to access a chest requiring a password. Enter the password `wgmy` to retrieve the flag and flag dropped as an item in qr code. Merge all five parts to form the full flag.
 
 #### Steps
 
@@ -193,7 +193,7 @@ For safety, execute `World I.exe` in a sandboxed virtual machine. Analyzing the 
 
 12. flag: `wgmy{5ce7d7a7140ebabf5cd439ffd3fcaac2}`
 
-### 5. World 2 (Game)
+### 6. World 2 (Game)
 
 #### Descriptions
 
@@ -227,7 +227,7 @@ Run the APK file `World_II.apk` on an Android emulator [MEmu](https://www.memupl
 
 7. flag: `wgmy{4068a87d81d8c901043885bac4f51785}`
 
-### 5. World 3 (Game)
+### 7. World 3 (Game)
 
 #### Descriptions
 
@@ -239,7 +239,7 @@ Open the game in browser and use Inspect Element to analyze its structure. Disco
 
 ![image](https://github.com/user-attachments/assets/f5ff9484-0d98-4772-bc9a-f0c3f27a94d7)
 
-2. inject payload
+2. inject payload `$dataWeapons[5].params = [999, 999, 999, 999, 999, 999, 999, 999];`
 
 ![image](https://github.com/user-attachments/assets/607ab68f-fd4e-44c0-963f-2e90a3fbfbf4)
 
@@ -264,3 +264,96 @@ Open the game in browser and use Inspect Element to analyze its structure. Disco
 ![image](https://github.com/user-attachments/assets/838a876e-2c57-41db-842b-db9a18bfdff2)
 
 8. flag: `wgmy{811a332e71b5d4651edd3ddcace5b748}`
+
+### 8. Christmas GIFt (Misc)
+
+#### Descriptions
+
+Launch [stegsolve.jar](https://github.com/eugenekolo/sec-tools/raw/master/stego/stegsolve/stegsolve/stegsolve.jar). Open the `gift.gif` file. Switch to the Frame Browser tab. Use the left arrow button at the bottom of the interface to scroll the last frames. The flag directly visible.
+
+#### Steps
+
+1. switch to frame browser in stegsolve.jar 
+
+![image](https://github.com/user-attachments/assets/563af3a1-54c5-455e-ba3e-6f4b68f3df84)
+
+2. navigate to the last frame
+
+![image](https://github.com/user-attachments/assets/65619960-922f-4334-83ff-75db1a8986ec)
+
+4. flag: `wgmy{1eaa6da7b7f5df6f7c0381c8f23af4d3}`
+
+### 9. Invisible Ink (Misc)
+
+#### Descriptions
+
+Launch [stegsolve.jar](https://github.com/eugenekolo/sec-tools/raw/master/stego/stegsolve/stegsolve/stegsolve.jar). Open the `challenge.gif` file. Navigate to Frame 5 and Frame 6. Save these frames individually using the "Save Frame" option in stegsolve. Use stegsolve's color filter modes (e.g., grayscale, red channel, blue channel) on both frames to highlight any obscured text. Use stegsolve’s Image Combiner tool. After combining the images, the hidden text also a flag should become clearer. 
+
+#### Steps
+
+1. extract image using stegsolve
+
+![image](https://github.com/user-attachments/assets/606f6377-a999-4426-8e96-7cca70d3a294)
+
+2. apply colour filter
+
+![image](https://github.com/user-attachments/assets/e08850a4-3029-471f-8198-49fe8009d001)
+
+3. combine two images
+
+![image](https://github.com/user-attachments/assets/0c07ea2d-6b2f-4aaf-b1b0-2ccb8647fd2e)
+
+4. flag `wgmy{d41d8cd98f00b204e9800998ecf8427e}`
+
+### 10. The DCM Meta (Misc)
+
+#### Descriptions
+
+Given a file `challenge.dcm` and a set of element numbers, likely indices. Read the binary content of the `challenge.dcm` file. By helping from my brother GPT,the script locate specific patterns and extract elements based on the indices. Combine the extracted elements to form the flag.
+
+#### Steps
+
+1. binary content of the `challenge.dcm`
+
+![image](https://github.com/user-attachments/assets/fbf54bc9-ae63-4334-bb9a-73ab76c25bd9)
+
+2. a set of element numbers, likely indices
+
+![image](https://github.com/user-attachments/assets/8bdd5eb4-e917-46ca-8551-b3b12cc3da6d)
+
+3. solve python script
+```
+from typing import List
+
+def extract_flag(file_path: str, indices: List[int]) -> str:
+    # Open the file in binary mode and read its content
+    with open(file_path, 'rb') as file:
+        file_content = file.read()
+
+    # Locate the start of the flag (e.g., "WGMY")
+    elements = []
+    offset = file_content.find(b'WGMY') + 4  # Start reading after "WGMY"
+    
+    # Extract alphanumeric characters following "WGMY"
+    while offset < len(file_content):
+        element = file_content[offset:offset + 1].decode(errors='ignore')  # Decode bytes to string
+        if element.isalnum():  # Include only alphanumeric characters
+            elements.append(element)
+        offset += 4  # Move to the next element based on observed pattern
+    
+    # Use the given indices to extract specific elements
+    flag_elements = [elements[i] for i in indices]
+
+    # Combine the extracted elements to form the flag
+    flag = "wgmy{" + "".join(flag_elements) + "}"
+    return flag
+
+# Example usage
+file_path = 'challenge.dcm'
+indices = [25, 10, 0, 3, 17, 19, 23, 27, 4, 13, 20, 8, 24, 21, 31, 15, 7, 29, 6, 1, 9, 30, 22, 5, 28, 18, 26, 11, 2, 14, 16, 12]
+flag = extract_flag(file_path, indices)
+print(flag)
+
+```
+
+4. flag: `wgmy{51fadeb6cc77504db336850d53623177}`
